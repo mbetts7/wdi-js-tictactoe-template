@@ -10,13 +10,13 @@ $(function() {
   var players = [                         // player data
     {
       name:      'Ernie',
-      marker:    '&times;',
+      marker:    'X',
       img_url:   'img/ernie.jpg',
       indicator: $(status_indicators[0])
     },
     {
       name:      'Bert',
-      marker:    '&oslash;',
+      marker:    'O',
       img_url:   'img/bert.jpg',
       indicator: $(status_indicators[1])
     }
