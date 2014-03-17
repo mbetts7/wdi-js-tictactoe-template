@@ -14,7 +14,7 @@
     <div id="game">
         <ul id="teams">
           <li ng-repeat="player in players" class="{{player.indicator}}">
-            <img src="{{player.img_url}}">
+            <img src={{player.img_url}}>
             <h2>Team <span class="team">{{player.marker}}</span></h2>
             <h3 class="player">{{player.name}}</h3>
           </li>  
@@ -22,6 +22,9 @@
       <div id="board">
         <div ng-repeat="tile in board">
           <div id="tile{{tile.position}}" class="tile" ng-click="selectTile(tile)"></div>
+            <div class="boardTile">
+              <img src={{tile.img_url}}>
+            </div>
         </div>
       </div>
       <div id="results">

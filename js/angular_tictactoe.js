@@ -30,7 +30,7 @@ game.ticTacToe.controller('gameController', function($scope) {
     $scope.currentPlayer.indicator = "current";
   };
   $scope.selectTile = function(tile) {
-    alert("Tile #" + tile.position + " was clicked");
+    tile.img_url = $scope.currentPlayer.img_url;
     return $scope.changeCurrentPlayer();
   };
   $scope.board = [

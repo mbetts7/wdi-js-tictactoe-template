@@ -31,7 +31,7 @@ game.ticTacToe.controller 'gameController',
       return
     
     $scope.selectTile = (tile) ->
-      alert("Tile #"+ tile.position + " was clicked")
+      tile.img_url = $scope.currentPlayer.img_url
       $scope.changeCurrentPlayer()
 
   # Create board and tiles
