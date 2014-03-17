@@ -21,7 +21,7 @@
         </ul>
       <div id="board">
         <div ng-repeat="tile in board">
-          <div id="tile{{tile}}" class="tile"></div>
+          <div id="tile{{tile.position}}" class="tile" ng-click="selectTile(tile)"></div>
         </div>
       </div>
       <div id="results">
