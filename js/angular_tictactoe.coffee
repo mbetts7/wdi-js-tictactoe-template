@@ -17,6 +17,24 @@ game.ticTacToe.controller 'gameController',
         indicator: null
     ]
 
+    $scope.currentPlayer = $scope.players[0]
+
+    $scope.changeCurrentPlayer = ->
+      $scope.currentPlayer.indicator = null
+
+      if $scope.currentPlayer == $scope.players[0]
+        $scope.currentPlayer = $scope.players[1]
+      else
+        $scope.currentPlayer = $scope.players[0]
+
+      $scope.currentPlayer.indicator = "current"
+      return
+    
+    $scope.selectTile = (tile) ->
+      alert("Tile #"+ tile.position + " was clicked")
+      $scope.changeCurrentPlayer()
+
+  # Create board and tiles
     $scope.board = [
         position: 0
         clicked: false
@@ -55,6 +73,4 @@ game.ticTacToe.controller 'gameController',
         img_url: null
     ]
 
-    $scope.selectTile = (tile) ->
-      alert("Tile #"+ tile.position + " was clicked")
     return

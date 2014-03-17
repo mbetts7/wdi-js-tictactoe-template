@@ -19,6 +19,20 @@ game.ticTacToe.controller('gameController', function($scope) {
       indicator: null
     }
   ];
+  $scope.currentPlayer = $scope.players[0];
+  $scope.changeCurrentPlayer = function() {
+    $scope.currentPlayer.indicator = null;
+    if ($scope.currentPlayer === $scope.players[0]) {
+      $scope.currentPlayer = $scope.players[1];
+    } else {
+      $scope.currentPlayer = $scope.players[0];
+    }
+    $scope.currentPlayer.indicator = "current";
+  };
+  $scope.selectTile = function(tile) {
+    alert("Tile #" + tile.position + " was clicked");
+    return $scope.changeCurrentPlayer();
+  };
   $scope.board = [
     {
       position: 0,
@@ -58,7 +72,4 @@ game.ticTacToe.controller('gameController', function($scope) {
       img_url: null
     }
   ];
-  $scope.selectTile = function(tile) {
-    return alert("Tile #" + tile.position + " was clicked");
-  };
 });
