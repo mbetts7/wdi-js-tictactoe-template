@@ -2,7 +2,7 @@ game = game || {}
 
 game.ticTacToe = angular.module 'ticTacToe', []
 
-game.ticTacToe.controller 'gameController',
+game.ticTacToe.controller 'gameController', [ "$scope",
   ($scope) ->    
     
     $scope.players = [
@@ -10,11 +10,31 @@ game.ticTacToe.controller 'gameController',
         marker: "X"
         img_url: "img/ernie.jpg"
         indicator: "current"
+        tiles_selected: []
       ,
         name: "Bert"
         marker: "O"
         img_url: "img/bert.jpg"
         indicator: null
+        tiles_selected: []
+    ]
+
+    $scope.winCombos = [
+        [0,1,2]
+      ,
+        [3,4,5]
+      ,
+        [6,7,8]
+      ,
+        [0,3,6]
+      ,
+        [1,4,7]
+      ,
+        [2,5,8]
+      ,
+        [0,4,8]
+      ,
+        [2,4,6]
     ]
 
     $scope.currentPlayer = $scope.players[0]
@@ -30,9 +50,11 @@ game.ticTacToe.controller 'gameController',
       $scope.currentPlayer.indicator = "current"
       return
     
-    $scope.selectTile = (tile) ->
-      tile.img_url = $scope.currentPlayer.img_url
-      $scope.changeCurrentPlayer()
+    $scope.isWin = (tiles) ->
+      for combo in $scope.winCombos
+        if tiles.indexOf(combo[0]) >= 0 and tiles.indexOf(combo[1]) >= 0 and tiles.indexOf(combo[2]) >= 0
+          return true
+      return false
 
   # Create board and tiles
     $scope.board = [
@@ -73,4 +95,14 @@ game.ticTacToe.controller 'gameController',
         img_url: null
     ]
 
+    $scope.selectTile = (tile) ->
+      if not tile.clicked
+        tile.clicked = true
+        $scope.currentPlayer.tiles_selected.push tile.position
+        tile.img_url = $scope.currentPlayer.img_url
+        if $scope.isWin($scope.currentPlayer.tiles_selected)
+          alert($scope.changeCurrentPlayer.name + " wins")
+        $scope.changeCurrentPlayer()
+
     return
+]
