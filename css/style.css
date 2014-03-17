@@ -68,6 +68,13 @@ img {
 #tile6 {
   border-left:0;
 }
+
+.boardTile > img {
+  height: 120px;
+  width: 120px;
+  margin: 15px auto;
+}
+
 #teams {
   position:relative;
   overflow:hidden;

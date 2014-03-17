@@ -21,10 +21,11 @@
         </ul>
       <div id="board">
         <div ng-repeat="tile in board">
-          <div id="tile{{tile.position}}" class="tile" ng-click="selectTile(tile)"></div>
+          <div id="tile{{tile.position}}" class="tile" ng-click="selectTile(tile)">
             <div class="boardTile">
               <img src={{tile.img_url}}>
             </div>
+          </div>
         </div>
       </div>
       <div id="results">
