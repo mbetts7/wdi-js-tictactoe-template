@@ -22,6 +22,7 @@ game.ticTacToe.controller('gameController', [
         tiles_selected: []
       }
     ];
+    $scope.tries = 0;
     $scope.winCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
     $scope.currentPlayer = $scope.players[0];
     $scope.changeCurrentPlayer = function() {
@@ -41,6 +42,12 @@ game.ticTacToe.controller('gameController', [
         if (tiles.indexOf(combo[0]) >= 0 && tiles.indexOf(combo[1]) >= 0 && tiles.indexOf(combo[2]) >= 0) {
           return true;
         }
+      }
+      return false;
+    };
+    $scope.isTie = function() {
+      if ($scope.tries === 9) {
+        return true;
       }
       return false;
     };
@@ -85,11 +92,14 @@ game.ticTacToe.controller('gameController', [
     ];
     $scope.selectTile = function(tile) {
       if (!tile.clicked) {
+        $scope.tries += 1;
+        tile.img_url = $scope.currentPlayer.img_url;
         tile.clicked = true;
         $scope.currentPlayer.tiles_selected.push(tile.position);
-        tile.img_url = $scope.currentPlayer.img_url;
         if ($scope.isWin($scope.currentPlayer.tiles_selected)) {
           alert($scope.changeCurrentPlayer.name + " wins");
+        } else if ($scope.isTie()) {
+          alert("Tie Game");
         }
         return $scope.changeCurrentPlayer();
       }
