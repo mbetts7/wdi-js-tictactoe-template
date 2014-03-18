@@ -108,14 +108,15 @@ game.ticTacToe.controller 'gameController', [ "$scope",
     ]
 
     $scope.newGame = ->
-      for tile in $scope.board
-        tile.clicked = false
-        tile.img_url = null
-      for player in $scope.players
-        player.indicator = null
-        player.tilesSelected = []
-      $scope.currentPlayer = $scope.players[0]
-      $scope.currentPlayer.indicator = "current"
+      # for tile in $scope.board
+      #   tile.clicked = false
+      #   tile.img_url = null
+      # for player in $scope.players
+      #   player.indicator = null
+      #   player.tilesSelected = []
+      # $scope.currentPlayer = $scope.players[0]
+      # $scope.currentPlayer.indicator = "current"
+      window.location.href = window.location.href
       return
 
     $scope.selectTile = (tile) ->
