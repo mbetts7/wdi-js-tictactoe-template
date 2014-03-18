@@ -23,7 +23,7 @@
         <div ng-repeat="tile in board">
           <div id="tile{{tile.position}}" class="tile" ng-click="selectTile(tile)">
             <div class="boardTile">
-              <img src={{tile.img_url}}>
+              <img src={{tile.img_url}} ng-show="tile.img_url" >
             </div>
           </div>
         </div>
