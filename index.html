@@ -28,10 +28,12 @@
           </div>
         </div>
       </div>
-      <div id="results">
-        <h1></h1>
-        <span class="image"></span>
-        <button>play again</button>
+      <div id="results" ng-show="endGame.show">
+        <h1>{{endGame.message}}</h1>
+        <span class="image">
+          <img src={{endGame.url}} />
+        </span>
+        <button ng-click="newGame()">PLAY AGAIN!</button>
       </div>
     </div>
     

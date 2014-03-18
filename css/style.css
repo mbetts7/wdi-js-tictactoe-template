@@ -120,7 +120,7 @@ img {
   font-size:30px;
 }
 #overlay {
-  display:none;
+  /*display:none;*/
   position:fixed;
   top:0;
   left:0;
@@ -130,7 +130,7 @@ img {
   z-index:-1;
 }
 #results {
-  display:none;
+  /*display:none;*/
   position:fixed;
   z-index:2;
   top:50%;
